@@ -1,0 +1,83 @@
+import java.math.BigInteger;
+
+class ComparaMultiplicaciones {
+
+    public static void main(String[] args) {
+
+        BigInteger[] datosM = new BigInteger[6];
+
+        datosM[0] = new BigInteger("100");
+        datosM[1] = new BigInteger("1000");
+        datosM[2] = new BigInteger("7500");
+        datosM[3] = new BigInteger("100000");
+        datosM[4] = new BigInteger("1000000");
+        datosM[5] = new BigInteger("10000000");
+
+        BigInteger[] datosN = new BigInteger[6];
+
+        datosN[0] = new BigInteger("8000");
+        datosN[1] = new BigInteger("6899532132");
+        datosN[2] = new BigInteger("715561213213");
+        datosN[3] = new BigInteger("85754213265686");
+        datosN[4] = new BigInteger("9498451261316552");
+        datosN[5] = new BigInteger("198753213216573131");
+
+        Multiplicacion[] metodos = {new MultiplicacionSumasSucesivas(), new MultiplicacionEgipcia(),
+                new MultiplicacionRusa()};
+
+        DatosEstadisticos[][] datosSalida = CalculadorEstadisticas.matrizEstadisticas(metodos,
+                datosN, datosM);
+
+        muestraDatosSalida(obtenerNombreMetodos(metodos), datosSalida);
+
+    }
+
+    private static String[] obtenerNombreMetodos(Multiplicacion[] metodos) {
+        String[] nombres = new String[metodos.length];
+        for (int i = 0; i < metodos.length; i++) {
+            nombres[i] = metodos[i].nombreMetodo();
+        }
+        return nombres;
+    }
+
+    private static void muestraDatosSalida(String[] nombreMetodos, DatosEstadisticos[][] datosSalida) {
+        muestraTiempos(nombreMetodos, datosSalida);
+        muestraResultados(nombreMetodos, datosSalida);
+    }
+
+    private static void muestraTiempos(String[] nombreMetodos, DatosEstadisticos[][] datosSalida) {
+        System.out.println("Tiempos de ejecución de los " + nombreMetodos.length + " algoritmos: ");
+        System.out.print("Tamaño ristra   ");
+        for (String nombre : nombreMetodos)
+            System.out.print(nombre + "  ");
+        System.out.println("");
+
+        for (int i = 0; i < datosSalida[0].length; i++) {
+            System.out.print("   " + datosSalida[0][i].getFactor2() + "         ");
+            for (DatosEstadisticos[] aDatosSalida : datosSalida)
+                if (aDatosSalida[i].getError()) System.out.print("----  ");
+                else System.out.printf("%5.4f   ", aDatosSalida[i].getTiempo());
+            System.out.println("");
+        }
+        System.out.println("");
+    }
+
+    private static void muestraResultados(String[] nombreMetodos, DatosEstadisticos[][] datosSalida) {
+        System.out.println("Resultados de las multiplicaciones: ");
+        System.out.print("Tamaño ristra   ");
+        for (String nombre : nombreMetodos) {
+            System.out.print(nombre + "  ");
+        }
+        System.out.println("");
+
+        for (int i = 0; i < datosSalida[0].length; i++) {
+            System.out.print("   " + datosSalida[0][i].getFactor2() + "         ");
+            for (DatosEstadisticos[] aDatosSalida : datosSalida) {
+                if (aDatosSalida[i].getError()) System.out.print("----  ");
+                else System.out.print(aDatosSalida[i].getResultado() + "  ");
+            }
+            System.out.println("");
+        }
+    }
+
+}
