@@ -46,7 +46,7 @@ class ComparaMultiplicaciones {
     }
 
     private static void muestraTiempos(String[] nombreMetodos, DatosEstadisticos[][] datosSalida) {
-        System.out.println("Tiempos de ejecución de los " + nombreMetodos.length + " algoritmos: ");
+        System.out.println("Tiempos de ejecución de los " + nombreMetodos.length + " algoritmos:");
         System.out.print("Tamaño ristra   ");
         for (String nombre : nombreMetodos) {
             System.out.print(nombre + "       ");
@@ -65,7 +65,7 @@ class ComparaMultiplicaciones {
     }
 
     private static void muestraResultados(String[] nombreMetodos, DatosEstadisticos[][] datosSalida) {
-        System.out.println("Resultados de las multiplicaciones: ");
+        System.out.println("Resultados de las multiplicaciones:");
         System.out.print("Tamaño ristra       ");
         for (String nombre : nombreMetodos) {
             System.out.print(nombre + "             ");

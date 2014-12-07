@@ -7,7 +7,7 @@ public class MultiplicacionEgipcia implements Multiplicacion {
 
     @Override
     public void multiplica(BigInteger n, BigInteger m, DatosEstadisticos datos) {
-        datos.setFactor(m);
+        datos.setOrden(m);
         resultado = new BigInteger[]{new BigInteger("0"), new BigInteger("0")};
         long inicio = System.currentTimeMillis();
 

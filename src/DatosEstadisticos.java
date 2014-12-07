@@ -12,7 +12,7 @@ class DatosEstadisticos {
         error = false;
     }
 
-    public void setFactor(BigInteger orden) {
+    public void setOrden(BigInteger orden) {
         this.orden = orden;
     }
 

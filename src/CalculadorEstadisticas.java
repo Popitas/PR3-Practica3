@@ -1,8 +1,8 @@
 import java.math.BigInteger;
 
-class CalculadorEstadisticas {
+public class CalculadorEstadisticas {
 
-    private static DatosEstadisticos estadisticaMultiplicacion(Multiplicacion metodo, BigInteger n, BigInteger m) {
+    public static DatosEstadisticos estadisticasMultiplicacion(Multiplicacion metodo, BigInteger n, BigInteger m) {
         DatosEstadisticos datos = new DatosEstadisticos();
 
         try {
@@ -13,17 +13,17 @@ class CalculadorEstadisticas {
         return datos;
     }
 
-    private static DatosEstadisticos[] vectorEstadisticas(Multiplicacion metodo, BigInteger[] datosN, BigInteger[] datosM) {
+    public static DatosEstadisticos[] vectorEstadisticas(Multiplicacion metodo, BigInteger[] datosN, BigInteger[] datosM) {
         DatosEstadisticos[] datosSalida = new DatosEstadisticos[datosM.length];
         for (int i = 0; i < datosSalida.length; i++) {
 
-            datosSalida[i] = estadisticaMultiplicacion(metodo, datosN[i], datosM[i]);
+            datosSalida[i] = estadisticasMultiplicacion(metodo, datosN[i], datosM[i]);
 
         }
         return datosSalida;
     }
 
-    static DatosEstadisticos[][] matrizEstadisticas(Multiplicacion[] metodos, BigInteger[] datosN, BigInteger[] datosM) {
+    public static DatosEstadisticos[][] matrizEstadisticas(Multiplicacion[] metodos, BigInteger[] datosN, BigInteger[] datosM) {
         DatosEstadisticos[][] datosSalida = new DatosEstadisticos[metodos.length][datosM.length];
 
         for (int i = 0; i < datosSalida.length; i++) {
@@ -32,5 +32,6 @@ class CalculadorEstadisticas {
 
         return datosSalida;
     }
+
 
 }

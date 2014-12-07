@@ -7,7 +7,7 @@ public class MultiplicacionSumasSucesivas implements Multiplicacion {
 
     @Override
     public void multiplica(BigInteger n, BigInteger m, DatosEstadisticos datos) {
-        datos.setFactor(m);
+        datos.setOrden(m);
         long inicio = System.currentTimeMillis();
         datos.setResultado(recursivaSumas(n, m));
         datos.setTiempo((System.currentTimeMillis() - inicio) / 1000);
