@@ -7,7 +7,7 @@ public class MultiplicacionRusa implements Multiplicacion {
 
     @Override
     public void multiplica(BigInteger n, BigInteger m, DatosEstadisticos datos) {
-        datos.setFactores(n, m);
+        datos.setFactor(m);
         long inicio = System.currentTimeMillis();
         datos.setResultado(recursivaRusa(n, m));
         datos.setTiempo((float) ((System.currentTimeMillis() - inicio) / 1000.0));

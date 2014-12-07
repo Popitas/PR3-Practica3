@@ -4,7 +4,8 @@ class DatosEstadisticos {
 
     private float tiempo;
     private boolean error;
-    private BigInteger factor1, factor2, resultado;
+    private BigInteger orden;
+    private BigInteger resultado;
 
     public DatosEstadisticos() {
         tiempo = 0;
@@ -15,9 +16,8 @@ class DatosEstadisticos {
         this.tiempo = tiempo;
     }
     
-    public void setFactores(BigInteger n, BigInteger m) {
-        factor1 = n;
-        factor2 = m;
+    public void setFactor(BigInteger orden) {
+        this.orden = orden;
     }
     
     public void setError() {
@@ -31,13 +31,9 @@ class DatosEstadisticos {
     public float getTiempo() {
         return tiempo;
     }
-    
-    public BigInteger getFactor1() {
-        return factor1;
-    }
 
-    public BigInteger getFactor2() {
-        return factor2;
+    public BigInteger getOrden() {
+        return orden;
     }
     
     public boolean getError() {

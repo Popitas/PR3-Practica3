@@ -15,19 +15,19 @@ class ComparaMultiplicaciones {
 
         BigInteger[] datosN = new BigInteger[6];
 
-        datosN[0] = new BigInteger("8000");
-        datosN[1] = new BigInteger("6899532132");
-        datosN[2] = new BigInteger("715561213213");
-        datosN[3] = new BigInteger("85754213265686");
-        datosN[4] = new BigInteger("9498451261316552");
-        datosN[5] = new BigInteger("198753213216573131");
+        datosN[0] = new BigInteger("80");
+        datosN[1] = new BigInteger("632");
+        datosN[2] = new BigInteger("7155");
+        datosN[3] = new BigInteger("85746");
+        datosN[4] = new BigInteger("941552");
+        datosN[5] = new BigInteger("1973131");
 
         Multiplicacion[] metodos = {new MultiplicacionSumasSucesivas(), new MultiplicacionEgipcia(),
                 new MultiplicacionRusa()};
 
         DatosEstadisticos[][] datosSalida = CalculadorEstadisticas.matrizEstadisticas(metodos,
                 datosN, datosM);
-
+        //prueba(datosSalida);
         muestraDatosSalida(obtenerNombreMetodos(metodos), datosSalida);
 
     }
@@ -48,15 +48,17 @@ class ComparaMultiplicaciones {
     private static void muestraTiempos(String[] nombreMetodos, DatosEstadisticos[][] datosSalida) {
         System.out.println("Tiempos de ejecución de los " + nombreMetodos.length + " algoritmos: ");
         System.out.print("Tamaño ristra   ");
-        for (String nombre : nombreMetodos)
-            System.out.print(nombre + "  ");
+        for (String nombre : nombreMetodos) {
+            System.out.print(nombre + "       ");
+        }
         System.out.println("");
 
         for (int i = 0; i < datosSalida[0].length; i++) {
-            System.out.print("   " + datosSalida[0][i].getFactor2() + "         ");
-            for (DatosEstadisticos[] aDatosSalida : datosSalida)
-                if (aDatosSalida[i].getError()) System.out.print("----  ");
-                else System.out.printf("%5.4f   ", aDatosSalida[i].getTiempo());
+            System.out.printf("%8d       ", datosSalida[0][i].getOrden());
+            for (DatosEstadisticos[] aDatosSalida : datosSalida) {
+                if (aDatosSalida[i].getError()) System.out.print("--------     ");
+                else System.out.printf("%6f     ", aDatosSalida[i].getTiempo());
+            }
             System.out.println("");
         }
         System.out.println("");
@@ -64,17 +66,17 @@ class ComparaMultiplicaciones {
 
     private static void muestraResultados(String[] nombreMetodos, DatosEstadisticos[][] datosSalida) {
         System.out.println("Resultados de las multiplicaciones: ");
-        System.out.print("Tamaño ristra   ");
+        System.out.print("Tamaño ristra       ");
         for (String nombre : nombreMetodos) {
-            System.out.print(nombre + "  ");
+            System.out.print(nombre + "             ");
         }
         System.out.println("");
 
         for (int i = 0; i < datosSalida[0].length; i++) {
-            System.out.print("   " + datosSalida[0][i].getFactor2() + "         ");
+            System.out.printf("%8d      ", datosSalida[0][i].getOrden());
             for (DatosEstadisticos[] aDatosSalida : datosSalida) {
-                if (aDatosSalida[i].getError()) System.out.print("----  ");
-                else System.out.print(aDatosSalida[i].getResultado() + "  ");
+                if (aDatosSalida[i].getError()) System.out.printf("%18s", "-------");
+                else System.out.printf("%18d", aDatosSalida[i].getResultado());
             }
             System.out.println("");
         }
